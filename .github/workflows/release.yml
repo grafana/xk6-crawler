@@ -1,0 +1,12 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*.*.*"]
+
+jobs:
+  release:
+    name: Release
+    uses: grafana/k6-extension-workflows/.github/workflows/release.yml@v0.2.1
+    with:
+      private: true

@@ -1,0 +1,9 @@
+/k6
+/k6.exe
+/build
+/node_modules
+yarn.lock
+bun.lockb
+/coverage.txt
+*test-out*
+*.har
