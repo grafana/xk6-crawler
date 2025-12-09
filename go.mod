@@ -4,7 +4,7 @@ go 1.24.0
 
 require (
 	github.com/gocolly/colly/v2 v2.1.0
-	github.com/grafana/sobek v0.0.0-20241024150027-d91f02b05e9b
+	github.com/grafana/sobek v0.0.0-20251209155516-22d1085c20a8
 	github.com/stretchr/testify v1.10.0
 	go.k6.io/k6 v0.56.0
 )
@@ -25,7 +25,7 @@ require (
 	github.com/antchfx/xpath v1.3.2 // indirect
 	github.com/cenkalti/backoff/v4 v4.3.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
-	github.com/dlclark/regexp2 v1.11.4 // indirect
+	github.com/dlclark/regexp2 v1.11.5 // indirect
 	github.com/evanw/esbuild v0.21.2 // indirect
 	github.com/fatih/color v1.18.0 // indirect
 	github.com/go-logr/logr v1.4.2 // indirect
