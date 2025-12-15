@@ -8,6 +8,8 @@ import (
 )
 
 // options is a sets an option on a colly.Collector.
+//
+//nolint:tagliatelle
 type options struct {
 	// UserAgent is the User-Agent string used by HTTP requests.
 	UserAgent string `json:"user_agent,omitempty"`

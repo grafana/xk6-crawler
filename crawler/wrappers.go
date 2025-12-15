@@ -11,6 +11,7 @@ type wHTMLCallback func(*wHTMLElement)
 
 type wHTMLElement struct {
 	*colly.HTMLElement
+
 	Request  *wRequest
 	Response *wResponse
 }
@@ -46,6 +47,7 @@ type wRequestCallback func(*wRequest)
 
 type wRequest struct {
 	*colly.Request
+
 	URL     string
 	Headers wHeader
 }
@@ -76,6 +78,7 @@ type wResponseCallback func(*wResponse)
 
 type wResponse struct {
 	*colly.Response
+
 	Request *wRequest
 	Headers wHeader
 }

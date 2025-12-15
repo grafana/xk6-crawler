@@ -3,7 +3,6 @@ package crawler
 
 import (
 	"github.com/grafana/xk6-crawler/crawler"
-
 	"go.k6.io/k6/js/modules"
 )
 
