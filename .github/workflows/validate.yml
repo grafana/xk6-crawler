@@ -12,6 +12,6 @@ permissions: {}
 jobs:
   validate:
     name: Validate
-    uses: grafana/k6-extension-workflows/.github/workflows/validate.yml@6e128171f8461811142f687cc7d6298655e37309 # v0.2.0
+    uses: grafana/k6-extension-workflows/.github/workflows/validate.yml@f1ccc7a2050f08545d5116d4530472018247114d # v0.2.1
     with:
       go-versions: '["1.22.x"]'
