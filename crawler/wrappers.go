@@ -59,7 +59,7 @@ func wrapRequest(req *colly.Request) *wRequest {
 func (req *wRequest) Visit(loc string) error {
 	err := req.Request.Visit(loc)
 
-	if errors.Is(err, colly.ErrMaxDepth) || errors.Is(err, colly.ErrAlreadyVisited) {
+	if errors.Is(err, colly.ErrMaxDepth) || errors.Is(err, &colly.AlreadyVisitedError{}) {
 		return nil
 	}
 
