@@ -60,7 +60,10 @@ func (t *tripware) toParsedRequest(req *http.Request) (*httpext.ParsedHTTPReques
 
 		preq.Body = bytes.NewBuffer(data)
 
-		req.Body.Close() //nolint:errcheck,gosec
+		err = req.Body.Close()
+		if err != nil {
+			return nil, err
+		}
 	}
 
 	if len(req.Header.Get(hdrUserAgent)) > 0 {
