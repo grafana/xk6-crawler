@@ -11,6 +11,7 @@ type wHTMLCallback func(*wHTMLElement)
 
 type wHTMLElement struct {
 	*colly.HTMLElement
+
 	Request  *wRequest
 	Response *wResponse
 }
@@ -46,6 +47,7 @@ type wRequestCallback func(*wRequest)
 
 type wRequest struct {
 	*colly.Request
+
 	URL     string
 	Headers wHeader
 }
@@ -57,7 +59,7 @@ func wrapRequest(req *colly.Request) *wRequest {
 func (req *wRequest) Visit(loc string) error {
 	err := req.Request.Visit(loc)
 
-	if errors.Is(err, colly.ErrMaxDepth) || errors.Is(err, colly.ErrAlreadyVisited) {
+	if errors.Is(err, colly.ErrMaxDepth) || errors.Is(err, &colly.AlreadyVisitedError{}) {
 		return nil
 	}
 
@@ -76,6 +78,7 @@ type wResponseCallback func(*wResponse)
 
 type wResponse struct {
 	*colly.Response
+
 	Request *wRequest
 	Headers wHeader
 }

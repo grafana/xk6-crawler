@@ -23,6 +23,20 @@ func newTransport(vu modules.VU) http.RoundTripper {
 	return &tripware{vu: vu}
 }
 
+func (t *tripware) RoundTrip(req *http.Request) (*http.Response, error) {
+	preq, err := t.toParsedRequest(req)
+	if err != nil {
+		return nil, err
+	}
+
+	resp, err := httpext.MakeRequest(t.vu.Context(), t.vu.State(), preq)
+	if err != nil {
+		return nil, err
+	}
+
+	return t.toResponse(req, resp)
+}
+
 func (t *tripware) toParsedRequest(req *http.Request) (*httpext.ParsedHTTPRequest, error) {
 	state := t.vu.State()
 	if state == nil {
@@ -60,7 +74,10 @@ func (t *tripware) toParsedRequest(req *http.Request) (*httpext.ParsedHTTPReques
 
 		preq.Body = bytes.NewBuffer(data)
 
-		req.Body.Close() //nolint:errcheck,gosec
+		err = req.Body.Close()
+		if err != nil {
+			return nil, err
+		}
 	}
 
 	if len(req.Header.Get(hdrUserAgent)) > 0 {
@@ -106,20 +123,6 @@ func (t *tripware) toResponse(req *http.Request, eresp *httpext.Response) (*http
 	resp.StatusCode = eresp.Status
 
 	return resp, nil
-}
-
-func (t *tripware) RoundTrip(req *http.Request) (*http.Response, error) {
-	preq, err := t.toParsedRequest(req)
-	if err != nil {
-		return nil, err
-	}
-
-	resp, err := httpext.MakeRequest(t.vu.Context(), t.vu.State(), preq)
-	if err != nil {
-		return nil, err
-	}
-
-	return t.toResponse(req, resp)
 }
 
 const (

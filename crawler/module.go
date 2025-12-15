@@ -25,7 +25,7 @@ func (*rootModule) NewModuleInstance(vu modules.VU) modules.Instance {
 
 	instance.vu = vu
 	instance.exports.Default = instance
-	instance.exports.Named = map[string]interface{}{
+	instance.exports.Named = map[string]any{
 		"Crawler": instance.newCrawler,
 	}
 
@@ -49,7 +49,7 @@ func (mod *module) newCrawler(call sobek.ConstructorCall, runtime *sobek.Runtime
 		return runtime.NewGoError(err)
 	}
 
-	c.Collector.WithTransport(newTransport(mod.vu))
+	c.WithTransport(newTransport(mod.vu))
 
 	return runtime.ToValue(c).ToObject(runtime)
 }
