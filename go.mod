@@ -5,7 +5,7 @@ go 1.24.0
 require (
 	github.com/gocolly/colly/v2 v2.3.0
 	github.com/grafana/sobek v0.0.0-20241024150027-d91f02b05e9b
-	github.com/stretchr/testify v1.10.0
+	github.com/stretchr/testify v1.11.1
 	go.k6.io/k6 v0.56.0
 )
 
