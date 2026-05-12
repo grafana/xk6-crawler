@@ -1,6 +1,7 @@
 {
   "name": "xk6-crawler",
   "version": "0.1.0",
+  "packageManager": "npm@10.9.2",
   "description": "Web crawler API for k6",
   "repository": "github:grafana/xk6-crawler",
   "license": "AGPL-3.0-only",
