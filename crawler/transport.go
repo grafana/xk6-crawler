@@ -8,9 +8,9 @@ import (
 	"strings"
 	"time"
 
-	"go.k6.io/k6/js/modules"
-	khttp "go.k6.io/k6/js/modules/k6/http"
-	"go.k6.io/k6/lib/netext/httpext"
+	"go.k6.io/k6/v2/js/modules"
+	khttp "go.k6.io/k6/v2/js/modules/k6/http"
+	"go.k6.io/k6/v2/lib/netext/httpext"
 )
 
 type tripware struct {
